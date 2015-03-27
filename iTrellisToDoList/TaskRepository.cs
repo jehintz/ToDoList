@@ -29,6 +29,11 @@ namespace iTrellisToDoList
             throw new NotImplementedException();
         }
 
+        private List<Task> GetTasks()
+        {
+            return tasksList;
+        }
+
         //Implementation of IEnumerable<Task> interface
         public IEnumerator<Task> GetEnumerator()
         {

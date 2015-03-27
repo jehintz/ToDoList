@@ -17,7 +17,7 @@ namespace iTrellisToDoList
             get { return _title; }
             set
             {
-                if (value == null || value == "")
+                if (String.IsNullOrWhiteSpace(value))
                     throw new ArgumentException("Please enter a descriptive title for the task.");
                 _title = value;
             }
