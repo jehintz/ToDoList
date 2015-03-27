@@ -11,7 +11,7 @@ namespace iTrellisToDoList
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            TaskRepository taskRepo = new TaskRepository();
         }
     }
 }

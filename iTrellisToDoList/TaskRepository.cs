@@ -15,22 +15,14 @@ namespace iTrellisToDoList
             tasksList = new List<Task>();
         }
 
-        //Add a task with NO due date
-        private void AddTask(string title, string description)
+        //Add a task
+        public void AddTask(Task taskToAdd)
         {
-            Task newTask = new Task(title, description);
-            tasksList.Add(newTask);
-        }
-
-        //Add a task WITH a due date
-        private void AddTask(string title, string description, DateTime dueDate)
-        {
-            Task newTask = new Task(title, description, dueDate);
-            tasksList.Add(newTask);
+            tasksList.Add(taskToAdd);
         }
 
         //Remove a specific task from the list
-        private void RemoveTask(Task taskToRemove)
+        public bool RemoveTask(Task taskToRemove)
         {
             if (tasksList.Count > 0)
             {
@@ -39,15 +31,15 @@ namespace iTrellisToDoList
                     if (tasksList[i] == taskToRemove)
                     {
                         tasksList.RemoveAt(i);
-                        break;
+                        return true;
                     }
                 }
             }
-            throw new ArgumentException("Task not found.");
+            return false;
         }
 
         //Mark a specific task as completed
-        private void CompleteTask(Task taskToComplete)
+        public bool CompleteTask(Task taskToComplete)
         {
             if (tasksList.Count > 0)
             {
@@ -56,11 +48,11 @@ namespace iTrellisToDoList
                     if (t == taskToComplete)
                     {
                         t.IsCompleted = true;
-                        break;
+                        return true;
                     }
                 }
             }
-            throw new ArgumentException("Task not found.");
+            return false;
         }
 
         //Get a list of all tasks

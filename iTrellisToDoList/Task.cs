@@ -35,15 +35,8 @@ namespace iTrellisToDoList
         }
         public bool IsCompleted { get; set; }
 
-        //Constructors
-        public Task(string title, string details)
-        {
-            Title = title;
-            Description = details;
-            IsCompleted = false;
-        }
-
-        public Task(string title, string details, DateTime dueDate)
+        //Constructor
+        public Task(string title, string details, DateTime dueDate = new DateTime())
         {
             Title = title;
             Description = details;

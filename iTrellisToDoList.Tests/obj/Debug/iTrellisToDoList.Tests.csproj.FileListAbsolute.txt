@@ -1,0 +1,7 @@
+C:\Users\Jessica\Documents\GitHub\ToDoList\ToDoList\iTrellisToDoList.Tests\bin\Debug\iTrellisToDoList.Tests.dll
+C:\Users\Jessica\Documents\GitHub\ToDoList\ToDoList\iTrellisToDoList.Tests\bin\Debug\iTrellisToDoList.Tests.pdb
+C:\Users\Jessica\Documents\GitHub\ToDoList\ToDoList\iTrellisToDoList.Tests\bin\Debug\iTrellisToDoList.dll
+C:\Users\Jessica\Documents\GitHub\ToDoList\ToDoList\iTrellisToDoList.Tests\bin\Debug\iTrellisToDoList.pdb
+C:\Users\Jessica\Documents\GitHub\ToDoList\ToDoList\iTrellisToDoList.Tests\obj\Debug\iTrellisToDoList.Tests.csprojResolveAssemblyReference.cache
+C:\Users\Jessica\Documents\GitHub\ToDoList\ToDoList\iTrellisToDoList.Tests\obj\Debug\iTrellisToDoList.Tests.dll
+C:\Users\Jessica\Documents\GitHub\ToDoList\ToDoList\iTrellisToDoList.Tests\obj\Debug\iTrellisToDoList.Tests.pdb
