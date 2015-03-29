@@ -195,6 +195,7 @@ namespace iTrellisToDoList
                 //Should only get here if data validation has failed
                 ErrorLabel.Visible = true;
                 ErrorLabel.Text = ex.Message;
+                TitleTextBox.Focus(); //Since this title is the only field that has the potential to throw errors
             }
         }
 

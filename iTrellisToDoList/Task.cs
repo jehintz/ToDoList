@@ -19,6 +19,8 @@ namespace iTrellisToDoList
             {
                 if (String.IsNullOrWhiteSpace(value))
                     throw new ArgumentException("Please enter a descriptive title for the task.");
+                if (value.Length > 50)
+                    throw new ArgumentException("Title should be under 50 characters.");
                 _title = value;
             }
         }
@@ -37,7 +39,7 @@ namespace iTrellisToDoList
             ID = ++_id;
         }
 
-        //Implementation of IComparable<Task> - sort by date
+        //Implementation of IComparable<Task> - sort by DueDate
         public int CompareTo(Task other)
         {
             if (other == null)

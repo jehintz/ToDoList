@@ -16,22 +16,22 @@ namespace iTrellisToDoList
         }
 
         //Add a task
-        public void AddTask(Task taskToAdd)
+        public void AddTask(Task task)
         {
-            tasksList.Add(taskToAdd);
+            tasksList.Add(task);
             tasksList.Sort();
         }
 
         //Remove a specific task from the list
-        public bool RemoveTask(Task taskToRemove)
+        public bool RemoveTask(int taskID)
         {
             if (tasksList.Count > 0)
             {
-                for (int i = 0; i < tasksList.Count; i++)
+                foreach (var t in tasksList)
                 {
-                    if (tasksList[i] == taskToRemove)
+                    if (t.ID == taskID)
                     {
-                        tasksList.Remove(taskToRemove);
+                        tasksList.Remove(t);
                         return true;
                     }
                 }
@@ -39,26 +39,14 @@ namespace iTrellisToDoList
             return false;
         }
 
-        public void RemoveTask(int taskID)
-        {
-            foreach (var t in tasksList)
-            {
-                if (t.ID == taskID)
-                {
-                    tasksList.Remove(t);
-                    break;
-                }
-            }
-        }
-
         //Mark a specific task as completed
-        public bool CompleteTask(Task taskToComplete)
+        public bool CompleteTask(int taskID)
         {
             if (tasksList.Count > 0)
             {
                 foreach (var t in tasksList)
                 {
-                    if (t == taskToComplete)
+                    if (t.ID == taskID)
                     {
                         t.IsCompleted = true;
                         return true;
@@ -66,18 +54,6 @@ namespace iTrellisToDoList
                 }
             }
             return false;
-        }
-
-        public void CompleteTask(int taskID)
-        {
-            foreach (var t in tasksList)
-            {
-                if (t.ID == taskID)
-                {
-                    t.IsCompleted = true;
-                    break;
-                }
-            }
         }
 
         //Get a list of all tasks
