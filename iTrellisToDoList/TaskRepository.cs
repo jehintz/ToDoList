@@ -19,6 +19,7 @@ namespace iTrellisToDoList
         public void AddTask(Task taskToAdd)
         {
             tasksList.Add(taskToAdd);
+            tasksList.Sort();
         }
 
         //Remove a specific task from the list

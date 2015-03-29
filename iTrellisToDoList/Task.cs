@@ -5,7 +5,7 @@ using System.Web;
 
 namespace iTrellisToDoList
 {
-    public class Task
+    public class Task : IComparable<Task>
     {
         //Private fields
         private string _title;
@@ -35,6 +35,20 @@ namespace iTrellisToDoList
             DueDate = dueDate;
             IsCompleted = false;
             ID = ++_id;
+        }
+
+        //Implementation of IComparable<Task> - sort by date
+        public int CompareTo(Task other)
+        {
+            if (other == null)
+                return 1;
+
+            if (this.DueDate > other.DueDate)
+                return 1;
+            else if (this.DueDate == other.DueDate)
+                return 0;
+            else
+                return -1;
         }
     }
 }
