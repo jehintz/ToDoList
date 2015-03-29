@@ -20,7 +20,11 @@
                 </asp:TemplateField>
                 <asp:BoundField HeaderText="Task" DataField="Title" />
                 <asp:BoundField HeaderText="Due Date" DataField="DueDate" NullDisplayText="Indefinite" />
-                <asp:HyperLinkField DataTextField="Description" HeaderText="Details" />
+                <asp:TemplateField HeaderText="Details">
+                    <ItemTemplate>
+                        <asp:HyperLink ID="HyperLink1" runat="server" Target="_self" Text="Hover" ToolTip='<%# Eval("Description") %>'></asp:HyperLink>
+                    </ItemTemplate>
+                </asp:TemplateField>
             </Columns>
         </asp:GridView>
         <asp:Button ID="AddButton" runat="server" Text="Add New Task..." OnClick="AddButton_Click" />
@@ -41,7 +45,11 @@
                 </asp:TemplateField>
                 <asp:BoundField HeaderText="Task" DataField="Title" />
                 <asp:BoundField HeaderText="Due Date" DataField="DueDate" NullDisplayText="Indefinite" />
-                <asp:HyperLinkField DataTextField="Description" HeaderText="Details" />
+                <asp:TemplateField HeaderText="Details">
+                    <ItemTemplate>
+                        <asp:HyperLink ID="HyperLink1" runat="server" Target="_self" Text="Hover" ToolTip='<%# Eval("Description") %>'></asp:HyperLink>
+                    </ItemTemplate>
+                </asp:TemplateField>
             </Columns>
         </asp:GridView>
         <asp:Button ID="CompletedDeleteButton" runat="server" Text="Delete Selected" OnClick="CompletedDeleteButton_Click" />
