@@ -56,9 +56,33 @@ namespace iTrellisToDoList
         }
 
         //Get a list of all tasks
-        private List<Task> GetTasks()
+        private List<Task> GetAllTasks()
         {
             return tasksList;
+        }
+
+        //Get a list of only pending tasks
+        private List<Task> GetPendingTasks()
+        {
+            List<Task> pendingTaskList = new List<Task>();
+            foreach (var t in tasksList)
+            {
+                if (!t.IsCompleted)
+                    pendingTaskList.Add(t);
+            }
+            return pendingTaskList;
+        }
+
+        //Get a list of only completed tasks
+        private List<Task> GetCompletedTasks()
+        {
+            List<Task> completedTaskList = new List<Task>();
+            foreach (var t in tasksList)
+            {
+                if (t.IsCompleted)
+                    completedTaskList.Add(t);
+            }
+            return completedTaskList;
         }
 
         //Implementation of IEnumerable<Task> interface

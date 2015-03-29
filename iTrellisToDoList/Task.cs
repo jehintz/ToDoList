@@ -9,7 +9,6 @@ namespace iTrellisToDoList
     {
         //Private fields
         private string _title;
-        private DateTime _dueDate;
 
         //Public properties
         public string Title
@@ -23,16 +22,7 @@ namespace iTrellisToDoList
             }
         }
         public string Description { get; set; }
-        public DateTime DueDate
-        {
-            get { return _dueDate; }
-            set
-            {
-                if (value < DateTime.Now)
-                    throw new ArgumentException("The due date must be later than the current date.");
-                _dueDate = value;
-            }
-        }
+        public DateTime DueDate { get; set; }
         public bool IsCompleted { get; set; }
 
         //Constructor
