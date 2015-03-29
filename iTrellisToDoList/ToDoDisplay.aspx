@@ -7,7 +7,8 @@
     <title></title>
 </head>
 <body>
-    <form id="ViewTasksForm" runat="server">
+    <form id="Form1" runat="server">
+        <asp:Panel ID="ViewTasksPanel" runat="server">
         <asp:Label ID="PendingLabel" runat="server" Text="Pending Tasks" Font-Bold="True" Font-Size="Large"></asp:Label>
         <br />
         <asp:GridView ID="PendingGridView" runat="server" AutoGenerateColumns="False">
@@ -22,7 +23,7 @@
                 <asp:HyperLinkField DataTextField="Description" HeaderText="Details" />
             </Columns>
         </asp:GridView>
-        <asp:Button ID="AddButton" runat="server" Text="Add New Task..." />
+        <asp:Button ID="AddButton" runat="server" Text="Add New Task..." OnClick="AddButton_Click" />
         &nbsp;&nbsp;
         <asp:Button ID="CompleteButton" runat="server" Text="Mark Selected as Completed" OnClick="CompleteButton_Click" />
         &nbsp;&nbsp;
@@ -47,6 +48,32 @@
         <br />
         <br />
         <asp:Button ID="LoadTestData" runat="server" Text="Use Sample Data" OnClick="LoadTestData_Click" BackColor="#00CC00" />
+            </asp:Panel>
+        <asp:Panel ID="AddTaskPanel" runat="server" Visible="false">
+            <asp:Label ID="TitleLabel" runat="server" Text="Title: "></asp:Label>
+
+            <asp:TextBox ID="TitleTextBox" runat="server" Width="500px"></asp:TextBox>
+
+            <br />
+            <br />
+            <asp:Label ID="Label1" runat="server" Text="Details: "></asp:Label>
+
+            <asp:TextBox ID="DetailsTextBox" runat="server" Width="500px"></asp:TextBox>
+
+            <br />
+            <br />
+            <asp:Label ID="Label2" runat="server" Text="Due Date: "></asp:Label>
+
+            <asp:CheckBox ID="NoDueDateCheckBox" runat="server" ViewStateMode="Inherit" Text="N/A" AutoPostBack="True" OnCheckedChanged="NoDueDateCheckBox_CheckedChanged" />
+            <asp:Calendar ID="DueDateCalendar" runat="server"></asp:Calendar>
+
+            <br />
+            <asp:Button ID="FinalizeAddButton" runat="server" Text="Add Task" OnClick="FinalizeAddButton_Click" />
+
+            &nbsp;
+            <asp:Label ID="ErrorLabel" runat="server" ForeColor="Red" Visible="False"></asp:Label>
+
+        </asp:Panel>
     </form>
 </body>
 </html>

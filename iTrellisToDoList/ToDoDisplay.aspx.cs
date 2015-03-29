@@ -49,7 +49,12 @@ namespace iTrellisToDoList
                 {
                     row.Cells[2].Text = "N/A";
                 }
-                else if (rowDate < DateTime.Now)
+                else if (rowDate == DateTime.Today)
+                {
+                    row.BackColor = System.Drawing.Color.Yellow;
+                    row.Cells[2].Text = rowDate.ToShortDateString();
+                }
+                else if (rowDate < DateTime.Today)
                 {
                     row.BackColor = System.Drawing.Color.Red;
                     row.Cells[2].Text = rowDate.ToShortDateString();
@@ -153,6 +158,60 @@ namespace iTrellisToDoList
             CompletedGridView.DataSource = repo.GetCompletedTasks();
             Page.DataBind();
             FormatDataGrids();
+        }
+
+        protected void FinalizeAddButton_Click(object sender, EventArgs e)
+        {
+            TaskRepository repo = (TaskRepository)Session["Repo"];
+
+            try
+            {
+                if (!DueDateCalendar.Visible)
+                {
+                    repo.AddTask(new Task(TitleTextBox.Text, DetailsTextBox.Text));
+                    PendingGridView.DataSource = repo.GetPendingTasks();
+                    CompletedGridView.DataSource = repo.GetCompletedTasks();
+                    Page.DataBind();
+                    FormatDataGrids();
+
+                    ViewTasksPanel.Visible = true;
+                    AddTaskPanel.Visible = false;
+                }
+                else
+                {
+                    repo.AddTask(new Task(TitleTextBox.Text, DetailsTextBox.Text, DueDateCalendar.SelectedDate));
+                    PendingGridView.DataSource = repo.GetPendingTasks();
+                    CompletedGridView.DataSource = repo.GetCompletedTasks();
+                    Page.DataBind();
+                    FormatDataGrids();
+
+                    ViewTasksPanel.Visible = true;
+                    AddTaskPanel.Visible = false;
+                }
+            }
+            catch (Exception ex)
+            {
+                ErrorLabel.Visible = true;
+                ErrorLabel.Text = ex.Message;
+            }
+        }
+
+        protected void AddButton_Click(object sender, EventArgs e)
+        {
+            ViewTasksPanel.Visible = false;
+            AddTaskPanel.Visible = true;
+            ErrorLabel.Visible = false;
+            TitleTextBox.Text = "";
+            DetailsTextBox.Text = "";
+            DueDateCalendar.SelectedDate = DateTime.Today;
+        }
+
+        protected void NoDueDateCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (NoDueDateCheckBox.Checked)
+                DueDateCalendar.Visible = false;
+            else
+                DueDateCalendar.Visible = true;
         }
     }
 }
