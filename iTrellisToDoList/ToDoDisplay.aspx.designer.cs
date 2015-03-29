@@ -13,13 +13,31 @@ namespace iTrellisToDoList {
     public partial class ToDoDisplay {
         
         /// <summary>
-        /// form1 control.
+        /// ViewTasksForm control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        protected global::System.Web.UI.HtmlControls.HtmlForm ViewTasksForm;
+        
+        /// <summary>
+        /// PendingLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label PendingLabel;
+        
+        /// <summary>
+        /// PendingGridView control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView PendingGridView;
         
         /// <summary>
         /// AddButton control.
@@ -40,12 +58,48 @@ namespace iTrellisToDoList {
         protected global::System.Web.UI.WebControls.Button CompleteButton;
         
         /// <summary>
-        /// DeleteButton control.
+        /// PendingDeleteButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button DeleteButton;
+        protected global::System.Web.UI.WebControls.Button PendingDeleteButton;
+        
+        /// <summary>
+        /// CompletedLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label CompletedLabel;
+        
+        /// <summary>
+        /// CompletedGridView control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView CompletedGridView;
+        
+        /// <summary>
+        /// CompletedDeleteButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button CompletedDeleteButton;
+        
+        /// <summary>
+        /// LoadTestData control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button LoadTestData;
     }
 }

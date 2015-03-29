@@ -54,7 +54,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\iTrellisToDoList\iTrellisToDoList.csproj">
-      <Project>{04219D70-975A-4D57-9113-8FCE82374E99}</Project>
+      <Project>{04219d70-975a-4d57-9113-8fce82374e99}</Project>
       <Name>iTrellisToDoList</Name>
     </ProjectReference>
   </ItemGroup>

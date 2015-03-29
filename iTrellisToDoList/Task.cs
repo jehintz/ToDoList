@@ -9,6 +9,7 @@ namespace iTrellisToDoList
     {
         //Private fields
         private string _title;
+        private static int _id = 0;
 
         //Public properties
         public string Title
@@ -24,6 +25,7 @@ namespace iTrellisToDoList
         public string Description { get; set; }
         public DateTime DueDate { get; set; }
         public bool IsCompleted { get; set; }
+        public int ID { get; private set; }
 
         //Constructor
         public Task(string title, string details, DateTime dueDate = new DateTime())
@@ -32,6 +34,7 @@ namespace iTrellisToDoList
             Description = details;
             DueDate = dueDate;
             IsCompleted = false;
+            ID = ++_id;
         }
     }
 }

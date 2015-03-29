@@ -5,7 +5,7 @@ using System.Web;
 
 namespace iTrellisToDoList
 {
-    public class TaskRepository : IEnumerable<Task>
+    public class TaskRepository
     {
         private List<Task> tasksList;
 
@@ -30,12 +30,24 @@ namespace iTrellisToDoList
                 {
                     if (tasksList[i] == taskToRemove)
                     {
-                        tasksList.RemoveAt(i);
+                        tasksList.Remove(taskToRemove);
                         return true;
                     }
                 }
             }
             return false;
+        }
+
+        public void RemoveTask(int taskID)
+        {
+            foreach (var t in tasksList)
+            {
+                if (t.ID == taskID)
+                {
+                    tasksList.Remove(t);
+                    break;
+                }
+            }
         }
 
         //Mark a specific task as completed
@@ -55,14 +67,26 @@ namespace iTrellisToDoList
             return false;
         }
 
+        public void CompleteTask(int taskID)
+        {
+            foreach (var t in tasksList)
+            {
+                if (t.ID == taskID)
+                {
+                    t.IsCompleted = true;
+                    break;
+                }
+            }
+        }
+
         //Get a list of all tasks
-        private List<Task> GetAllTasks()
+        public List<Task> GetAllTasks()
         {
             return tasksList;
         }
 
         //Get a list of only pending tasks
-        private List<Task> GetPendingTasks()
+        public List<Task> GetPendingTasks()
         {
             List<Task> pendingTaskList = new List<Task>();
             foreach (var t in tasksList)
@@ -74,7 +98,7 @@ namespace iTrellisToDoList
         }
 
         //Get a list of only completed tasks
-        private List<Task> GetCompletedTasks()
+        public List<Task> GetCompletedTasks()
         {
             List<Task> completedTaskList = new List<Task>();
             foreach (var t in tasksList)
@@ -83,17 +107,6 @@ namespace iTrellisToDoList
                     completedTaskList.Add(t);
             }
             return completedTaskList;
-        }
-
-        //Implementation of IEnumerable<Task> interface
-        public IEnumerator<Task> GetEnumerator()
-        {
-            return tasksList.GetEnumerator();
-        }
-
-        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
-        {
-            return tasksList.GetEnumerator();
         }
     }
 }
