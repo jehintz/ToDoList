@@ -184,6 +184,15 @@ namespace iTrellisToDoList {
         protected global::System.Web.UI.WebControls.Calendar DueDateCalendar;
         
         /// <summary>
+        /// ErrorLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label ErrorLabel;
+        
+        /// <summary>
         /// FinalizeAddButton control.
         /// </summary>
         /// <remarks>
@@ -193,12 +202,12 @@ namespace iTrellisToDoList {
         protected global::System.Web.UI.WebControls.Button FinalizeAddButton;
         
         /// <summary>
-        /// ErrorLabel control.
+        /// CancelButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label ErrorLabel;
+        protected global::System.Web.UI.WebControls.Button CancelButton;
     }
 }

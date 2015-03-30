@@ -34,49 +34,6 @@ namespace iTrellisToDoList
             FormatDataGrids();
         }
 
-        //Formats DueDate column in each DataGridRow to a more readable short-form DateTime and changes the background of any overdue tasks to red
-        private void FormatDataGrids()
-        {
-            TaskRepository repo = (TaskRepository)Session["Repo"];
-            PendingGridView.DataSource = repo.GetPendingTasks();
-            CompletedGridView.DataSource = repo.GetCompletedTasks();
-            Page.DataBind();
-
-            foreach (GridViewRow row in PendingGridView.Rows)
-            {
-                //If no DueDate was entered, do not display default DateTime; instead, show "N/A"
-                DateTime rowDate = DateTime.Parse(row.Cells[2].Text);
-                if (rowDate == default(DateTime))
-                {
-                    row.Cells[2].Text = "N/A";
-                }
-                //Change row background to red if the DueDate is past due
-                else if (rowDate < DateTime.Today)
-                {
-                    row.BackColor = System.Drawing.Color.Red;
-                    row.Cells[2].Text = rowDate.ToShortDateString();
-                }
-                else
-                {
-                    row.Cells[2].Text = rowDate.ToShortDateString();
-                }
-            }
-
-            //Same as above, but since no completed task can be overdue, do not include the DueDate check
-            foreach (GridViewRow row in CompletedGridView.Rows)
-            {
-                DateTime rowDate = DateTime.Parse(row.Cells[2].Text);
-                if (rowDate == default(DateTime))
-                {
-                    row.Cells[2].Text = "N/A";
-                }
-                else
-                {
-                    row.Cells[2].Text = rowDate.ToShortDateString();
-                }
-            }
-        }
-
         //Mark selected tasks as completed
         protected void CompleteButton_Click(object sender, EventArgs e)
         {
@@ -206,10 +163,7 @@ namespace iTrellisToDoList
             AddTaskPanel.Visible = true;
 
             //Reset values
-            ErrorLabel.Visible = false;
-            TitleTextBox.Text = "";
-            DetailsTextBox.Text = "";
-            DueDateCalendar.SelectedDate = DateTime.Today;
+            ResetTaskEntryFields();
         }
 
         //If "N/A" is chosen when adding a task, hide the calendar because it is unnecessary
@@ -219,6 +173,70 @@ namespace iTrellisToDoList
                 DueDateCalendar.Visible = false;
             else
                 DueDateCalendar.Visible = true;
+        }
+
+        //Cancel adding a new task (leave Add Task view and go back to Task view)
+        protected void CancelButton_Click(object sender, EventArgs e)
+        {
+            ViewTasksPanel.Visible = true;
+            AddTaskPanel.Visible = false;
+
+            //Reset values
+            ResetTaskEntryFields();
+        }
+
+        //Formats DueDate column in each DataGridRow to a more readable short-form DateTime and changes the background of any overdue tasks to red
+        private void FormatDataGrids()
+        {
+            TaskRepository repo = (TaskRepository)Session["Repo"];
+            PendingGridView.DataSource = repo.GetPendingTasks();
+            CompletedGridView.DataSource = repo.GetCompletedTasks();
+            Page.DataBind();
+
+            foreach (GridViewRow row in PendingGridView.Rows)
+            {
+                //If no DueDate was entered, do not display default DateTime; instead, show "N/A"
+                DateTime rowDate = DateTime.Parse(row.Cells[2].Text);
+                if (rowDate == default(DateTime))
+                {
+                    row.Cells[2].Text = "N/A";
+                }
+                //Change row background to red if the DueDate is past due
+                else if (rowDate < DateTime.Today)
+                {
+                    row.BackColor = System.Drawing.Color.Red;
+                    row.Cells[2].Text = rowDate.ToShortDateString();
+                }
+                else
+                {
+                    row.Cells[2].Text = rowDate.ToShortDateString();
+                }
+            }
+
+            //Same as above, but since no completed task can be overdue, do not include the DueDate check
+            foreach (GridViewRow row in CompletedGridView.Rows)
+            {
+                DateTime rowDate = DateTime.Parse(row.Cells[2].Text);
+                if (rowDate == default(DateTime))
+                {
+                    row.Cells[2].Text = "N/A";
+                }
+                else
+                {
+                    row.Cells[2].Text = rowDate.ToShortDateString();
+                }
+            }
+        }
+
+        //Clear any user-entered data from the Add Task view
+        private void ResetTaskEntryFields()
+        {
+            ErrorLabel.Visible = false;
+            TitleTextBox.Text = "";
+            DetailsTextBox.Text = "";
+            NoDueDateCheckBox.Checked = false;
+            DueDateCalendar.Visible = true;
+            DueDateCalendar.SelectedDate = DateTime.Today;
         }
     }
 }

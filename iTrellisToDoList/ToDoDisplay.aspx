@@ -75,11 +75,13 @@
             <asp:CheckBox ID="NoDueDateCheckBox" runat="server" ViewStateMode="Inherit" Text="N/A" AutoPostBack="True" OnCheckedChanged="NoDueDateCheckBox_CheckedChanged" />
             <asp:Calendar ID="DueDateCalendar" runat="server"></asp:Calendar>
 
-            <br />
-            <asp:Button ID="FinalizeAddButton" runat="server" Text="Add Task" OnClick="FinalizeAddButton_Click" />
-
-            &nbsp;
             <asp:Label ID="ErrorLabel" runat="server" ForeColor="Red" Visible="False"></asp:Label>
+
+            <br />
+            <asp:Button ID="FinalizeAddButton" runat="server" OnClick="FinalizeAddButton_Click" Text="Add Task" />
+            &nbsp;
+            <asp:Button ID="CancelButton" runat="server" OnClick="CancelButton_Click" Text="Cancel" />
+            <br />
 
         </asp:Panel>
     </form>
